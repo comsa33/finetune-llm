@@ -1,0 +1,39 @@
+{
+	"name": "poetry3-poetry-pyenv",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	// 👇 Features to add to the Dev Container. More info: https://containers.dev/implementors/features.
+	// "features": {},
+	// 👇 Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// 👇 Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "",
+	// 👇 Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"njpwerner.autodocstring"
+			]
+		}
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/nvidia-cuda:1": {
+			"installCudnn": true,
+			"installCudnnDev": true,
+			"installNvtx": true,
+			"installToolkit": true,
+			"cudaVersion": "12.2",
+			"cudnnVersion": "8.9.5.29"
+		}
+	},
+	"containerEnv": {
+		"NVIDIA_VISIBLE_DEVICES": "0"
+	},
+	"runArgs": [
+		"--runtime=nvidia"
+	]
+	// 👇 Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
